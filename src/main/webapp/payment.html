@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>결제하기</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <link rel="stylesheet" href="default.css">
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+
+    <wrap id="wrap">
+
+    <!-- 헤더 -->
+        <header id="header">
+            <div id="title">
+                <h1>🍜 맛나분식</h1>
+                <p>주문 확인 및 결제</p>
+            </div>
+            <nav id="nav">
+                <ul class="menu">
+                    <li class="menuItem">
+                        <a href="./index.html">
+                            <span class="material-icons-outlined">
+                                home
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menuItem">
+                        <a href="">
+                            <span class="material-icons-outlined">
+                                menu
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menuItem">
+                        <a href="">
+                            <span class="material-icons-outlined">
+                                shopping_cart
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menuItem">
+                        <a href="">
+                            <span class="material-icons-outlined">
+                                credit_card
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menuItem">
+                        <a href="">
+                            <span class="material-icons-outlined">
+                                view_list
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </header>
+
+        <!-- 주문 내역 -->
+        <main id="main">
+            <section class="order-section">
+                <h2>주문 내역</h2>
+    
+                <ul class="order-list">
+                    <li class="order-item">
+                        <span class="menu-name">떡볶이</span>
+                        <div class="menu-control">
+                        <button>-</button>
+                        <span class="count">2</span>
+                        <button>+</button>
+                        </div>
+                        <span class="price">8,000원</span>
+                    </li>
+    
+                    <li class="order-item">
+                        <span class="menu-name">순대</span>
+                        <div class="menu-control">
+                        <button>-</button>
+                        <span class="count">1</span>
+                        <button>+</button>
+                        </div>
+                        <span class="price">4,000원</span>
+                    </li>
+    
+                    <li class="order-item">
+                        <span class="menu-name">김밥</span>
+                        <div class="menu-control">
+                        <button>-</button>
+                        <span class="count">1</span>
+                        <button>+</button>
+                        </div>
+                        <span class="price">3,000원</span>
+                    </li>
+                </ul>
+            </section>
+    
+            <!-- 금액 요약 -->
+            <section class="summary-section">
+                <div class="summary-row">
+                    <span>주문금액</span>
+                    <span>15,000원</span>
+                </div>
+                <div class="summary-row">
+                    <span>할인금액</span>
+                    <span>-0원</span>
+                </div>
+                <div class="summary-row total">
+                    <span>결제금액</span>
+                    <span>15,000원</span>
+                </div>
+            </section>
+    
+            <!-- 결제 수단 -->
+            <section class="payment-method-section">
+                <h2>결제 수단</h2>
+                <div class="payment-methods">
+                    <button class="method">💳 카드결제</button>
+                    <button class="method">💵 현금결제</button>
+                    <button class="method">📱 QR결제</button>
+                    <button class="method">⭐ 간편결제</button>
+                </div>
+            </section>
+    
+            <!-- 결제 버튼 -->
+            <button class="pay-button">
+            15,000원 결제하기
+            </button>
+        </main>
+
+    </div>
+
+</body>
+</html>
