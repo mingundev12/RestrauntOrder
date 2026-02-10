@@ -10,13 +10,7 @@ import java.util.List;
 import common.DBConnection;
 import dto.MenuDTO;
 
-public class MenuDAO implements ShopDAO{
-
-	@Override
-	public long getId() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+public class MenuDAO{
 	
 	public long getId(MenuDTO menu) {
 		Connection conn = DBConnection.getConnection();
@@ -40,12 +34,6 @@ public class MenuDAO implements ShopDAO{
 		}
 		
 		return id;
-	}
-
-	@Override
-	public boolean insert() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 	
 	public boolean insert(MenuDTO menu) {
@@ -75,12 +63,6 @@ public class MenuDAO implements ShopDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return false;
-	}
-
-	@Override
-	public boolean update() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
@@ -115,12 +97,6 @@ public class MenuDAO implements ShopDAO{
 		}
 		return false;
 	}
-
-	@Override
-	public boolean delete() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	public boolean delete(MenuDTO menu) {
 		Connection conn = DBConnection.getConnection();
@@ -143,6 +119,36 @@ public class MenuDAO implements ShopDAO{
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public static MenuDTO getMenu(long menuId) {
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		MenuDTO menu = new MenuDTO(menuId, null, null, 0, null);
+
+		String sql = "";
+		sql += "select menu_name, price from menu";
+		sql += " where id = " + menuId;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String menuName = rs.getString("menu_name");
+				int price = rs.getInt("price");
+				
+				menu.setMenuName(menuName);
+				menu.setPrice(price);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return menu;
 	}
 	
 	public List<MenuDTO> getList() {
