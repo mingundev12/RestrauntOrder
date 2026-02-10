@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#header {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+#title {
+    width: 800px;
+    position: relative;
+    text-align: center;
+}
+
+#title .title {
+    font-size: 32px;
+    color: #222;
+    padding: 20px 15px;
+}
+
+#nav {
+    width: 400px;
+}
+
+#nav .menu {
+    display: flex;
+}
+
+#nav .menu .menuItem a span {
+    color: #222;
+    font-size: 40px;
+    padding: 20px;
+}
