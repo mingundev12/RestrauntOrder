@@ -11,8 +11,35 @@ import common.DBConnection;
 import dto.MenuDTO;
 
 public class MenuDAO {
+	
+	public boolean insert(MenuDTO menu) {
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "";
+		sql += "insert into menu (menu_name, menu_img, price, category) values";
+		sql += " (?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, menu.getMenuName());
+			pstmt.setString(2, menu.getMenuImg());
+			pstmt.setInt(3, menu.getPrice());
+			pstmt.setString(4, menu.getCategory());
+			
+			int result = pstmt.executeUpdate();
+			
+			if (result != 0) {
+				System.out.println("메뉴 정상등록");
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
-	public List<MenuDTO> getMenuList() {
+	public List<MenuDTO> getList() {
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -52,6 +79,6 @@ public class MenuDAO {
 	
 //	public static void main(String[] args) {
 //		MenuDAO dao = new MenuDAO();
-//		dao.getMenuList();
+//		dao.getList();
 //	}
 }
