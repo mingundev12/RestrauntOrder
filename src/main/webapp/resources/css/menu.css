@@ -1,0 +1,35 @@
+
+.categoryWrap {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.categoryList {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.category {
+    flex: 1;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+
+    background: #fff3f3;
+    border: 1px solid #f18684;
+    border-radius: 30px;
+    transition: all 0.5s;
+}
+
+.category:hover {
+    background: #e53935;
+    color: #fff3f3;
+}
+
+.category p {
+    /* font-size: 24px; */
+    font-weight: 700;
+}

@@ -89,11 +89,13 @@ a {
     transition:all 0.7s;
     color:#eee;
     margin: 0 5px;
+    display: block;
 }
 
 #nav .menu .menuItem a span:hover {
     background: none;
-    color:#f18684
+    /* border: 1px solid #e53935; */
+    color:#f18684;
 }
 
 
