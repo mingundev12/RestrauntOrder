@@ -28,8 +28,8 @@ function showMenuListByCategory(selected) {
             li.classList.add("menuId_" + menu.id);
             li.innerHTML = `
                 <div class="info">
-                    <img src=${menu.imgUrl}>
-                    <p><strong>${menu.name}</strong>
+                    <img src=${menu.menuImg}>
+                    <p><strong>${menu.menuName}</strong>
                     <br>${menu.price}원</p>
                 </div>`;
 
