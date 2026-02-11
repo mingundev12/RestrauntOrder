@@ -11,6 +11,17 @@
     <link rel="stylesheet" href="./resources/css/payment.css">
 
     <script src="./resources/js/common.js"></script>
+    <script src="./resources/js/payment.js"></script>
+
+    <script>
+        const priceList = {
+            "떡볶이": 4000,
+            "순대": 4000,
+            "김밥": 3000,
+            "라면" : 3000
+        };
+        
+    </script>
 </head>
 <body>
 
@@ -73,31 +84,41 @@
                     <li class="order-item">
                         <span class="menu-name">떡볶이</span>
                         <div class="menu-control">
-                        <button>-</button>
-                        <span class="count">2</span>
-                        <button>+</button>
+                            <button class="minus">-</button>
+                            <span class="count">0</span>
+                            <button class="plus">+</button>
                         </div>
-                        <span class="price">8,000원</span>
+                        <span class="price">0원</span>
                     </li>
     
                     <li class="order-item">
                         <span class="menu-name">순대</span>
                         <div class="menu-control">
-                        <button>-</button>
-                        <span class="count">1</span>
-                        <button>+</button>
+                            <button class="minus">-</button>
+                            <span class="count">0</span>
+                            <button class="plus">+</button>
                         </div>
-                        <span class="price">4,000원</span>
+                        <span class="price">0원</span>
                     </li>
     
                     <li class="order-item">
                         <span class="menu-name">김밥</span>
                         <div class="menu-control">
-                        <button>-</button>
-                        <span class="count">1</span>
-                        <button>+</button>
+                            <button class="minus">-</button>
+                            <span class="count">0</span>
+                            <button class="plus">+</button>
                         </div>
-                        <span class="price">3,000원</span>
+                        <span class="price">0원</span>
+                    </li>
+
+                    <li class="order-item">
+                        <span class="menu-name">라면</span>
+                        <div class="menu-control">
+                            <button class="minus">-</button>
+                            <span class="count">0</span>
+                            <button class="plus">+</button>
+                        </div>
+                        <span class="price">0원</span>
                     </li>
                 </ul>
             </section>
@@ -106,15 +127,15 @@
             <section class="summary-section">
                 <div class="summary-row">
                     <span>주문금액</span>
-                    <span>15,000원</span>
+                    <span id="order-total">0원</span>
                 </div>
                 <div class="summary-row">
                     <span>할인금액</span>
-                    <span>-0원</span>
+                    <span id="discount">-0원</span>
                 </div>
                 <div class="summary-row total">
                     <span>결제금액</span>
-                    <span>15,000원</span>
+                    <span id="final-total">0원</span>
                 </div>
             </section>
     
@@ -131,7 +152,7 @@
     
             <!-- 결제 버튼 -->
             <button class="pay-button">
-                15,000원 결제하기
+                결제하기
             </button>
         </main>
 
