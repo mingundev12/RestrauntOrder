@@ -74,6 +74,7 @@
   border: 1px solid #ddd;
   background: #fff;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
 .method:hover {
@@ -91,4 +92,9 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.highlighted {
+  background: #e53935;
+  color: #ddd;
 }
