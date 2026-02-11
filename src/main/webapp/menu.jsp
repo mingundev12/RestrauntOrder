@@ -96,6 +96,29 @@
                     <li class="category"><p>면&nbsp;&nbsp;&nbsp;&nbsp;류</p></li>
                 </ul>
             </div>
+            <div class="menuWrap">
+                <ul class="menuList">
+                    <li class="menu">
+                        <div class="info">
+                            <img src="./resources/img/dduk_01.jpg">
+                            <p><strong>떡볶이</strong><br>3000원</p>
+                        </div>
+                    </li>
+                    <li class="menu">
+                        <div class="info">
+                            <img src="./resources/img/dduk_02.jpg">
+                            <p><strong>로제떡볶이</strong><br>4000원</p>
+                        </div>
+                    </li>
+                    <li class="menu">
+                        <div class="info">
+                            <img src="./resources/img/fried_01.jpg">
+                            <p><strong>모듬튀김</strong><br>3000원</p>
+                        </div>
+                    </li>
+                </ul>
+                
+            </div>
 
 
         </main>
