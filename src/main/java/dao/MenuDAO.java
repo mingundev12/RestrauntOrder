@@ -148,7 +148,7 @@ public class MenuDAO{
 		return menu;
 	}
 	
-	public List<MenuDTO> getList() {
+	public static List<MenuDTO> getList() {
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
