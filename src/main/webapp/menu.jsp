@@ -21,6 +21,23 @@
 
     <link rel="stylesheet" href="./resources/css/default.css">
     <link rel="stylesheet" href="./resources/css/menu.css">
+    <script src="./resources/js/common.js"></script>
+    <script src="./resources/js/menu.js"></script>
+    
+    <script>
+        const menu_list = [
+            <% for (int i = 0; i < menuList.size(); i++) {
+                MenuDTO menu = menuList.get(i) %>
+                {
+                    id: "<%= menu.getId() %>",
+                    name: "<%= menu.getMenuName() %>",
+                    imgUrl: "<%= menu.getMenuImg() %>",
+                    price: "<%= menu.getPrice() %>",
+                    category: "<%= menu.getCategory() %>"
+                } <%= (i < menuList.size() -1 ) ? "," : "" %>
+            <% } %>
+        ];
+    </script>
 </head>
 <body>
     <div id="wrap">

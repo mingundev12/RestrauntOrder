@@ -17,4 +17,6 @@ function highlight(selected) {
         category.classList.remove("highlighted");
     }
     selected.classList.add("highlighted");
+
+    showMenuListByCategory(selected);
 }
