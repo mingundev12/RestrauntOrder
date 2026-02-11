@@ -5,9 +5,13 @@ window.onload = function() {
 
     for (let category of categoryList) {
         category.addEventListener('click', function(){
-            highlight(category);
+            highlight(this);
         });
     }
+	
+	if(categoryList.length > 0) {
+		categoryList[0].click();
+	}
 }
 
 function highlight(selected) {
@@ -18,5 +22,7 @@ function highlight(selected) {
     }
     selected.classList.add("highlighted");
 
-    showMenuListByCategory(selected);
+	if(typeof showMenuListByCategory === "function") {
+    	showMenuListByCategory(selected);
+	}
 }
