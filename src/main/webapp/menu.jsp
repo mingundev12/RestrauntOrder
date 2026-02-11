@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import = java.util.List %>
-<%@ page import = dto.MenuDTO %>
-<%@ page import = dao.MenuDAO %>
+<%@ page import = "java.util.List" %>
+<%@ page import = "dto.MenuDTO" %>
+<%@ page import = "dao.MenuDAO" %>
 
 <%
 	List<MenuDTO> menuList = MenuDAO.getList();
+
 %>
 
 <!DOCTYPE html>
@@ -21,6 +22,23 @@
 
     <link rel="stylesheet" href="./resources/css/default.css">
     <link rel="stylesheet" href="./resources/css/menu.css">
+    <script src="./resources/js/common.js"></script>
+    
+    <script>
+        const menu_list = [
+            <% for (int i = 0; i < menuList.size(); i++) {
+                MenuDTO menu = menuList.get(i); %>
+                {
+                    id: "<%= menu.getId() %>",
+                    name: "<%= menu.getMenuName() %>",
+                    imgUrl: "<%= menu.getMenuImg() %>",
+                    price: "<%= menu.getPrice() %>",
+                    category: "<%= menu.getCategory() %>"
+                } <%= (i < menuList.size() -1 ) ? "," : "" %>
+            <% } %>
+        ];
+    </script>
+    <script src="./resources/js/menu.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -40,7 +58,7 @@
                         </a>
                     </li>
                     <li class="menuItem">
-                        <a href="./menu.html">
+                        <a href="./menu.jsp">
                             <span class="material-icons-outlined">
                                 menu
                             </span>
@@ -78,6 +96,29 @@
                     <li class="category"><p>식&nbsp;&nbsp;&nbsp;&nbsp;사</p></li>
                     <li class="category"><p>면&nbsp;&nbsp;&nbsp;&nbsp;류</p></li>
                 </ul>
+            </div>
+            <div class="menuWrap">
+                <ul class="menuList">
+                    <li class="menu">
+                        <div class="info">
+                            <img src="./resources/img/dduk_01.jpg">
+                            <p><strong>떡볶이</strong><br>3000원</p>
+                        </div>
+                    </li>
+                    <li class="menu">
+                        <div class="info">
+                            <img src="./resources/img/dduk_02.jpg">
+                            <p><strong>로제떡볶이</strong><br>4000원</p>
+                        </div>
+                    </li>
+                    <li class="menu">
+                        <div class="info">
+                            <img src="./resources/img/fried_01.jpg">
+                            <p><strong>모듬튀김</strong><br>3000원</p>
+                        </div>
+                    </li>
+                </ul>
+                
             </div>
 
 
