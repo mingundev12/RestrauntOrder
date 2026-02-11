@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import = java.util.List %>
-<%@ page import = dto.MenuDTO %>
-<%@ page import = dao.MenuDAO %>
+<%@ page import = "java.util.List" %>
+<%@ page import = "dto.MenuDTO" %>
+<%@ page import = "dao.MenuDAO" %>
 
 <%
 	List<MenuDTO> menuList = MenuDAO.getList();
+
 %>
 
 <!DOCTYPE html>
@@ -22,12 +23,11 @@
     <link rel="stylesheet" href="./resources/css/default.css">
     <link rel="stylesheet" href="./resources/css/menu.css">
     <script src="./resources/js/common.js"></script>
-    <script src="./resources/js/menu.js"></script>
     
     <script>
         const menu_list = [
             <% for (int i = 0; i < menuList.size(); i++) {
-                MenuDTO menu = menuList.get(i) %>
+                MenuDTO menu = menuList.get(i); %>
                 {
                     id: "<%= menu.getId() %>",
                     name: "<%= menu.getMenuName() %>",
@@ -38,6 +38,7 @@
             <% } %>
         ];
     </script>
+    <script src="./resources/js/menu.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -57,7 +58,7 @@
                         </a>
                     </li>
                     <li class="menuItem">
-                        <a href="./menu.html">
+                        <a href="./menu.jsp">
                             <span class="material-icons-outlined">
                                 menu
                             </span>
