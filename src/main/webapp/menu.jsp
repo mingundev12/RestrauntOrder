@@ -1,3 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ page import = java.util.List %>
+<%@ page import = dto.MenuDTO %>
+<%@ page import = dao.MenuDAO %>
+
+<%
+	List<MenuDTO> menuList = MenuDAO.getList();
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +21,6 @@
 
     <link rel="stylesheet" href="./resources/css/default.css">
     <link rel="stylesheet" href="./resources/css/menu.css">
-    <script src="./resources/js/menu.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -64,9 +74,9 @@
         <main id="main">
             <div class="categoryWrap">
                 <ul class="categoryList">
-                    <li class="category" id="snack"><p>분&nbsp;&nbsp;&nbsp;&nbsp;식</p></li>
-                    <li class="category" id="rice"><p>식&nbsp;&nbsp;&nbsp;&nbsp;사</p></li>
-                    <li class="category" id="noodle"><p>면&nbsp;&nbsp;&nbsp;&nbsp;류</p></li>
+                    <li class="category"><p>분&nbsp;&nbsp;&nbsp;&nbsp;식</p></li>
+                    <li class="category"><p>식&nbsp;&nbsp;&nbsp;&nbsp;사</p></li>
+                    <li class="category"><p>면&nbsp;&nbsp;&nbsp;&nbsp;류</p></li>
                 </ul>
             </div>
 
