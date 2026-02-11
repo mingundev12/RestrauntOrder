@@ -3,27 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MENU - 맛나분식</title>
+    <title>맛나분식</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <link rel="stylesheet" href="./resources/css/default.css">
-    <link rel="stylesheet" href="./resources/css/menu.css">
-    <script src="./resources/js/common.js"></script>
-    <script src="./resources/js/menu.js"></script>
+    <link rel="stylesheet" href="./resources/css/admin.css">
 
-    <script>
-        const menu_list = [];
-    </script>
+    <script src="./resources/js/admin.js"></script>
 </head>
 <body>
     <div id="wrap">
-
         <header id="header">
             <div id="title">
                 <h1>🍜 맛나분식</h1>
-                <p>메뉴 선택하기</p>
+                <p>관리 페이지</p>
             </div>
             <nav id="nav">
                 <ul class="menu">
@@ -65,41 +60,35 @@
                 </ul>
             </nav>
         </header>
-
         <main id="main">
-            <div class="categoryWrap">
-                <ul class="categoryList">
-                    <li class="category" id="snack"><p>분&nbsp;&nbsp;&nbsp;&nbsp;식</p></li>
-                    <li class="category" id="rice"><p>식&nbsp;&nbsp;&nbsp;&nbsp;사</p></li>
-                    <li class="category" id="noodle"><p>면&nbsp;&nbsp;&nbsp;&nbsp;류</p></li>
-                </ul>
-            </div>
-            <div class="menuWrap">
-                <ul class="menuList">
-                    <li class="menu">
-                        <div class="info">
-                            <img src="./resources/img/dduk_01.jpg">
-                            <p><strong>떡볶이</strong><br>3000원</p>
-                        </div>
-                    </li>
-                    <li class="menu">
-                        <div class="info">
-                            <img src="./resources/img/dduk_02.jpg">
-                            <p><strong>로제떡볶이</strong><br>4000원</p>
-                        </div>
-                    </li>
-                    <li class="menu">
-                        <div class="info">
-                            <img src="./resources/img/fried_01.jpg">
-                            <p><strong>모듬튀김</strong><br>3000원</p>
-                        </div>
-                    </li>
-                </ul>
-                
+            <div class="adminMenu">
+                <button class="adminBtn">
+                    <span class="material-icons-outlined">
+                        restaurant_menu
+                    </span>
+                    <p>메뉴 추가</p>
+                </button>
+                <button class="adminBtn">
+                    <span class="material-icons-outlined">
+                        edit_note
+                    </span>
+                    <p>메뉴 수정</p>
+                </button>
+                <button class="adminBtn">
+                    <span class="material-icons-outlined">
+                        delete_outline
+                    </span>
+                    <p>메뉴 삭제</p>
+                </button>
+                <button class="adminBtn">
+                    <span class="material-icons-outlined">
+                        bar_chart
+                    </span>
+                    <p>매출 조회</p>
+                </button>
             </div>
 
         </main>
-
     </div>
     
     <footer id="footer">

@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li class="menuItem">
-                        <a href="">
+                        <a href="./admin.html">
                             <span class="material-icons-outlined">
                                 view_list
                             </span>
