@@ -3,6 +3,7 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 import common.DBConnection;
 import dto.MenuDTO;
@@ -153,7 +154,7 @@ public class MenuDAO{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		List<MenuDTO> menuList = new ArrayList<>();
+		List<MenuDTO> list = new ArrayList<>();
 		
 		String sql = "";
 		sql += "select * from menu";
@@ -172,7 +173,7 @@ public class MenuDAO{
 				
 				MenuDTO menu = new MenuDTO(id, menuName, menuImg, price, category);
 				
-				menuList.add(menu);
+				list.add(menu);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -183,11 +184,24 @@ public class MenuDAO{
 //			System.out.println(menu);
 //		}
 		
-		return menuList;
+		return list;
 	}
 	
 //	public static void main(String[] args) {
 //		MenuDAO dao = new MenuDAO();
 //		dao.getList();
 //	}
+
+	// menu 테이블에서 나온 menu 객체 리스트를 json 규격에 따라
+	// 자바 스크립트 배열로 변환하는 메서드
+	public static String getListAsJson() {
+		List<MenuDTO> list = getList();
+		StringJoiner sj = new StringJoiner(",", "[", "]");
+
+		for (MenuDTO menu : list) {
+			sj.add(menu);
+		}
+
+		return sj.toString();
+	}
 }

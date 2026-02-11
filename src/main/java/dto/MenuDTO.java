@@ -45,8 +45,9 @@ public class MenuDTO {
 	}
 	@Override
 	public String toString() {
-		return "MenuDTO [id=" + id + ", menuName=" + menuName + ", menuImg=" + menuImg + ", price=" + price
-				+ ", category=" + category + "]";
+		return String.format("{\"id\":%d,\"menuName\":\"%s\","
+			+ "\"menuImg\":\"%s\",\"price\":%d,\"category\":\"%s\"}",
+			id, menuName, menuImg, price, category);
 	}
 	
 	
