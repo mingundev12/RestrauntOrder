@@ -7,21 +7,21 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     
-    <link rel="stylesheet" href="./resources/css/default.css">
-    <link rel="stylesheet" href="./resources/css/payment.css">
+    <link rel="stylesheet" href="./default.css">
+    <link rel="stylesheet" href="./payment.css">
 
-    <script src="./resources/js/common.js"></script>
-    <script src="./resources/js/payment.js"></script>
-
+    
     <script>
-        const priceList = {
-            "떡볶이": 4000,
-            "순대": 4000,
-            "김밥": 3000,
-            "라면" : 3000
-        };
-        
+        const cart = [
+            {id : 1, menuName : "원조 매콤 떡볶이", amount : 1, price : 4500},
+            {id : 2, menuName : "로제 크림 떡볶이", amount : 1, price : 6500},
+            {id : 3, menuName : "찰순대(내장포함)", amount : 1, price : 4500}
+        ]
     </script>
+    <script src="./js/common.js"></script>
+    <script src="./js/payment.js"></script>
+
+   
 </head>
 <body>
 
@@ -82,21 +82,15 @@
     
                 <ul class="order-list">
                     <li class="order-item">
-                        <span class="menu-name">떡볶이</span>
-                        <div class="menu-control">
-                            <button class="minus">-</button>
-                            <span class="count">0</span>
-                            <button class="plus">+</button>
-                        </div>
-                        <span class="price">0원</span>
+                        <div id="orderList"></div>
                     </li>
     
                     <li class="order-item">
                         <span class="menu-name">순대</span>
                         <div class="menu-control">
-                            <button class="minus">-</button>
+                            
                             <span class="count">0</span>
-                            <button class="plus">+</button>
+                            
                         </div>
                         <span class="price">0원</span>
                     </li>
@@ -151,7 +145,7 @@
             </section>
     
             <!-- 결제 버튼 -->
-            <button class="pay-button">
+            <button class="pay_button" onclick="pay()">
                 결제하기
             </button>
         </main>
