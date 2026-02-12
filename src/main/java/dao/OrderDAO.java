@@ -142,7 +142,7 @@ public class OrderDAO {
 			while (rs.next()) {
 				OrderAndPayment order = new OrderAndPayment(
 						rs.getLong("o.id"), rs.getInt("o.price_total"),
-						rs.getString("o.status"), rs.getTimestamp("p.created_at").toLocalDateTime(),
+						rs.getString("o.status"), rs.getTimestamp("o.created_at").toLocalDateTime(),
 						getOrderDetail(conn, rs.getLong("o.id")),
 						(rs.getString("p.pay_option") == null) ? "" : rs.getString("p.pay_option")
 						);
@@ -167,12 +167,12 @@ public class OrderDAO {
 			sj.add(order.toString());
 		}
 		
-		System.out.println(sj);
+//		System.out.println(sj);
 
 		return sj.toString();
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(getListAsJson());
-	}
+//	public static void main(String[] args) {
+//		System.out.println(getListAsJson());
+//	}
 }

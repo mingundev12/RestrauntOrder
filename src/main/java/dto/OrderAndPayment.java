@@ -25,7 +25,11 @@ public class OrderAndPayment extends OrderDTO {
 	public String toString() {
 		String str = super.toString();
 		
-		return str.replace("}", String.format(",\"pay_option\":%s}", pay_option));
+		str = str.substring(0, str.length() - 1);
+		
+//		System.out.println(str);
+		
+		return str.concat( String.format(",\"pay_option\":\"%s\"}", pay_option));
 	}
 	
 }

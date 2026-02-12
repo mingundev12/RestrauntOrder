@@ -21,7 +21,9 @@ function showAdminMenu(selected) {
                 </thead>
                 <tbody>`;
         
+        let sum = 0;
         order_list.forEach(order => {
+            sum += (order.status === "결제완료") ? order.price_total : 0;
             const orderList = Object.values(order.orderMap)
                             .map(item => `
                                 ${item.orderedName}
@@ -33,12 +35,16 @@ function showAdminMenu(selected) {
                     <td>${order.id}</td>
                     <td class="text-left">${orderList}</td>
                     <td>${order.price_total.toLocaleString()}원</td>
-                    <td><span class="status-${order.status}">${order.status}:${order.payment_status}</span></td>
+                    <td><span class="status-${order.status}">${order.status}<br>${order.pay_option}</span></td>
                     <td>${order.created_at.replace("T", " ")}</td>
                 </tr>
             `;
         });
-        tableHtml += `</tbody></table>`
+        tableHtml += `<tr>
+            <td colspan=2><strong>합 계</strong></td>
+            <td>${sum.toLocaleString()}원</td>
+            <td colspan=2></td>
+        </tbody></table>`;
         contentArea.innerHTML = tableHtml;
     }
     if(selected.id === "manage") {
