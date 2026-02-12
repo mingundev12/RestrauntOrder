@@ -72,17 +72,18 @@ public class MenuDAO{
 		String sql = "";
 		sql += "update menu set ";
 		sql += "menu_name = ?,";
-		sql += "menu_img = ?,";
+//		sql += "menu_img = ?,";
 		sql += "price = ?,";
-		sql += "category = ?,";
-		sql += "where id = " + menu.getId();
+		sql += "category = ?";
+		sql += "where id = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, menu.getMenuName());
-			pstmt.setString(2, menu.getMenuImg());
-			pstmt.setInt(3, menu.getPrice());
-			pstmt.setString(4, menu.getCategory());
+//			pstmt.setString(2, menu.getMenuImg());
+			pstmt.setInt(2, menu.getPrice());
+			pstmt.setString(3, menu.getCategory());
+			pstmt.setLong(4, menu.getId());
 			
 			int result = pstmt.executeUpdate();
 			
@@ -96,16 +97,18 @@ public class MenuDAO{
 		return false;
 	}
 	
-	public static boolean delete(MenuDTO menu) {
+	public static boolean delete(Long id) {
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement pstmt = null;
 		
 		
 		String sql = "";
-		sql += "delete from menu where id = " + menu.getId();
+		sql += "delete from menu where id = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setLong(1, id);
 			
 			int result = pstmt.executeUpdate();
 			
@@ -158,7 +161,7 @@ public class MenuDAO{
 		
 		String sql = "";
 		sql += "select * from menu";
-		sql += " order by category desc";
+		sql += " order by id asc";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -201,7 +204,7 @@ public class MenuDAO{
 			sj.add(menu.toString());
 		}
 		
-		System.out.println(sj);
+//		System.out.println(sj);
 
 		return sj.toString();
 	}
