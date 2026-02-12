@@ -28,4 +28,8 @@ function highlight(selected) {
 	if(typeof showMenuListByCategory === "function") {
         showMenuListByCategory(selected);
 	}
+
+    if(typeof showAdminMenu === "function") {
+        showAdminMenu(selected);
+    }
 }
