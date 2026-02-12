@@ -129,3 +129,13 @@ img {
     font-size: 30px; 
     cursor: pointer; 
 }
+
+.content {
+    width: 100%;
+}
+
+.content p {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+}
