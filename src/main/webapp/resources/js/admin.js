@@ -1,3 +1,5 @@
+
+
 function showAdminMenu(selected) {
     const contentArea = document.querySelector(".adminContent");
     if (selected.id === "viewOrder") {
@@ -13,6 +15,98 @@ function showAdminMenu(selected) {
         showMenuBtn();
         contentArea.innerHTML = makeTableShowMenus();
     }
+    if(selected.id === "deleteMenu") {
+        showDelForm();
+    }
+    if(selected.id === "addMenu") {
+        showAddForm();
+    }
+    if(selected.id === "updateMenu") {
+        showRepForm();
+    }
+
+    // modal 내부 close 버튼 클릭하면 modal 닫는 함수
+    document.querySelector(".close").addEventListener('click',() => {
+        let modal = document.getElementById("modalWrap");
+        modal.classList.add("hidden");
+        highlight(document.getElementById("manage"));
+    });
+
+}
+
+function showAddForm() {
+    let modal = document.getElementById("modalWrap");
+    modal.classList.remove("hidden");
+}
+
+function showRepForm() {
+    let modal = document.getElementById("modalWrap");
+    modal.classList.remove("hidden");
+
+    let contentField = modal.querySelector(".content");
+    contentField.classList.add("modify");
+    let contentHtml = `
+        <div class="modalTitleBox">
+            <p>수 정 하 기</p><br>
+            <span>수정할 메뉴를 선택해주세요</span>
+            <select id="selList">${makeSelectBox()}</select>
+        </div>
+        <div class="resultBox hidden"></div>
+        <div class="modBtnBox hidden"><button class="send">수 정</button></div>`;
+
+    contentField.innerHTML = contentHtml;
+
+    // 드롭다운 목록의 선택된 항목 이벤트 등록
+    const selectedMenu = document.querySelector("#selList");
+    selectedMenu.addEventListener('change', (event) => {
+        const menuId = event.target.value;
+        document.querySelector(".resultBox").classList.remove("hidden");
+        document.querySelector(".delBtnBox").classList.remove("hidden");
+    });
+}
+
+function showDelForm() {
+    let modal = document.getElementById("modalWrap");
+    modal.classList.remove("hidden");
+
+    let contentField = modal.querySelector(".content");
+    contentField.classList.add("delete");
+    let contentHtml = `
+        <div class="modalTitleBox">
+            <p>삭 제 하 기</p><br>
+            <span>삭제할 메뉴를 선택해주세요</span>
+            <select id="selList">${makeSelectBox()}</select>
+        </div>
+        <div class="resultBox hidden"><span></span>를 정말 삭제하시겠습니까?</div>
+        <div class="delBtnBox hidden"><button class="send">삭 제</button></div>`;
+
+    contentField.innerHTML = contentHtml;
+
+    // 드롭다운 목록의 선택된 항목 이벤트 등록
+    const selectedMenu = document.querySelector("#selList");
+    selectedMenu.addEventListener('change', (event) => {
+        const menuId = Number(event.target.value);
+        let menu = menu_list.find(m => m.id === menuId);
+
+        let resBox = document.querySelector(".resultBox")
+        resBox.querySelector("span").innerText = menu.menuName;
+        resBox.classList.remove("hidden");
+        document.querySelector(".delBtnBox").classList.remove("hidden");
+    });
+}
+
+function makeSelectBox() {
+    let result = "";
+    menu_list.forEach(menu => {
+        result += `<option value="${menu.id}">${menu.menuName}</option>`;
+    });
+    return result;
+}
+
+function closeModal() {
+    let modal = document.getElementById("modalWrap");
+    modal.classList.add("hidden");
+    highlight(document.getElementById("manage"));
 }
 
 function makeTableShowMenus() {
