@@ -63,7 +63,7 @@ public class OrderDTO {
 
 	    // 3. 최종 전체 JSON 조립
 	    return String.format(
-	        "{\"id\":%d, \"price_total\":%d, \"status\":\"%s\", \"created_at\":\"%s\", \"orderList\":%s}",
+	        "{\"id\":%d, \"price_total\":%d, \"status\":\"%s\", \"created_at\":\"%s\", \"orderMap\":%s}",
 	        this.id, this.price_total, this.status, dateStr, mapSj.toString()
 	    );
 	}
