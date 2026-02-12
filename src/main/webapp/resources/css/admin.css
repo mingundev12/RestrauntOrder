@@ -10,7 +10,7 @@
     border-radius: 15px;
     padding: 30px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .adminBtn:hover {
@@ -35,26 +35,55 @@
     margin-top: 20px;
     table-layout: fixed;
 }
+
 .admin-table th, .admin-table td {
     border: 1px solid #ddd;
     padding: 8px 5px;
     text-align: center;
     font-size: 14px;
     word-break: break-all;
+    height: 60px;
 }
+
 .admin-table th {
     background-color: rgba(241, 134, 132, 0.2);
 }
 
 /* 열마다 적절한 비율 할당 */
-.admin-table th:nth-child(1) { width: 80px; }  /* 주문번호 */
-.admin-table th:nth-child(2) { width: auto; }  /* 주문내역 (가장 넓게) */
-.admin-table th:nth-child(3) { width: 120px; } /* 총 금액 */
-.admin-table th:nth-child(4) { width: 100px; } /* 상태 */
-.admin-table th:nth-child(5) { width: 150px; } /* 주문시간 */
+.orders th:nth-child(1) { width: 80px; }  /* 주문번호 */
+.orders th:nth-child(2) { width: auto; }  /* 주문내역 (가장 넓게) */
+.orders th:nth-child(3) { width: 120px; } /* 총 금액 */
+.orders th:nth-child(4) { width: 100px; } /* 상태 */
+.orders th:nth-child(5) { width: 150px; } /* 주문시간 */
 .text-left { text-align: left !important; }
+
+/* 메뉴 테이블 비율 */
+img {
+    max-height: 150px;
+    max-width: 150px;
+    object-fit: contain;
+    display: block;
+    border-radius: 4px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menus th:nth-child(1) { width: 80px; }
+.menus th:nth-child(2) { width: 200px; }
+.menus th:nth-child(3) { width: 150px; }
+.menus th:nth-child(4) { width: 150px; }
+.menus th:nth-child(5) { width: auto; }
+
 
 /* 상태별 색상 표시 */
 .status-결제완료 { color: blue; font-weight: bold; }
 .status-주문취소 { color: red; font-weight: bold;}
 .status-배달완료 { color: green; }
+
+
+/* hidden */
+
+.hidden {
+    display: none;
+}
