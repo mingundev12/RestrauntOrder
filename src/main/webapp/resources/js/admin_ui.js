@@ -1,56 +1,7 @@
-function sendAddMenu() {
-    const form = document.querySelector("#addForm");
-    const formData = new FormData(form);
+/* admin_ui.js */
+/* HTML 태그들을 그리는 데 사용하는 함수들을 모아둠 */
 
-    fetch("addMenu.do", {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.text())
-    .then(data => {
-        if(data === "success") {
-            alert("메뉴 등록 완료");
-            location.reload();
-        }
-    });
-}
-
-function sendModMenu() {
-    const form = document.querySelector("#modifyForm");
-    const formData = new FormData(form);
-
-    fetch("modifyMenu.do", {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.text())
-    .then(data => {
-        if(data === "success") {
-            alert("메뉴 수정 완료");
-            location.reload();
-        }
-    });
-}
-
-function sendDelMenu() {
-    const form = document.querySelector("#deleteform");
-    const formData = new FormData(form);
-
-    if(!confirm("정말로 삭제하시겠습니까?")) return;
-
-    fetch("deleteMenu.do", {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.text())
-    .then(data => {
-        if(data === "success") {
-            alert("삭제 완료");
-            location.reload();
-        }
-    });
-}
-
+// 메뉴 등록하는 폼을 모달 속에 생성
 function showAddForm() {
     let modal = document.getElementById("modalWrap");
     modal.classList.remove("hidden");
@@ -88,6 +39,7 @@ function showAddForm() {
     contentField.innerHTML = contentHtml;
 }
 
+// 메뉴 수정하는 폼을 모달 속에 생성
 function showRepForm() {
     let modal = document.getElementById("modalWrap");
     modal.classList.remove("hidden");
@@ -136,6 +88,7 @@ function showRepForm() {
     });
 }
 
+// 메뉴 삭제하는 기능을 모달 안에 생성
 function showDelForm() {
     let modal = document.getElementById("modalWrap");
     modal.classList.remove("hidden");
@@ -172,6 +125,7 @@ function showDelForm() {
     });
 }
 
+// 수정, 삭제용으로 쓰일 드롭다운 목록을 생성
 function makeSelectBox() {
     let result = `<option value="" disabled selected>메뉴를 선택하세요</option>`;
     menu_list.forEach(menu => {
@@ -180,12 +134,7 @@ function makeSelectBox() {
     return result;
 }
 
-function closeModal() {
-    let modal = document.getElementById("modalWrap");
-    modal.classList.add("hidden");
-    highlight(document.getElementById("manage"));
-}
-
+// 메뉴관리 버튼을 눌렀을 때 메뉴 목록 테이블을 생성
 function makeTableShowMenus() {
     let tableHtml = `
         <table class = "admin-table menus">
@@ -214,6 +163,7 @@ function makeTableShowMenus() {
     return tableHtml;
 }
 
+// 주문조회 버튼을 눌렀을 때 주문 및 결제 테이블을 생성
 function makeTableShowOrders() {
     let tableHtml = `
         <table class="admin-table orders">
@@ -252,57 +202,3 @@ function makeTableShowOrders() {
     return tableHtml;
 }
 
-function hideMenuBth() {
-    let add = document.getElementById("addMenu");
-    let upd = document.getElementById("updateMenu");
-    let del = document.getElementById("deleteMenu");
-
-    add.classList.add("hidden");
-    upd.classList.add("hidden");
-    del.classList.add("hidden");
-}
-
-function showMenuBtn() {
-    let add = document.getElementById("addMenu");
-    let upd = document.getElementById("updateMenu");
-    let del = document.getElementById("deleteMenu");
-
-    add.classList.remove("hidden");
-    upd.classList.remove("hidden");
-    del.classList.remove("hidden");
-
-}
-
-function showAdminMenu(selected) {
-    const contentArea = document.querySelector(".adminContent");
-    if (selected.id === "viewOrder") {
-        hideMenuBth();
-
-        if(order_list.length === 0) {
-            contentArea.innerHTML = `<p> 주문 내역이 없습니다 ! </p>`;
-            return;
-        }
-        contentArea.innerHTML = makeTableShowOrders();
-    }
-    if(selected.id === "manage") {
-        showMenuBtn();
-        contentArea.innerHTML = makeTableShowMenus();
-    }
-    if(selected.id === "deleteMenu") {
-        showDelForm();
-    }
-    if(selected.id === "addMenu") {
-        showAddForm();
-    }
-    if(selected.id === "updateMenu") {
-        showRepForm();
-    }
-
-    // modal 내부 close 버튼 클릭하면 modal 닫는 함수
-    document.querySelector(".close").addEventListener('click',() => {
-        let modal = document.getElementById("modalWrap");
-        modal.classList.add("hidden");
-        highlight(document.getElementById("manage"));
-    });
-
-}

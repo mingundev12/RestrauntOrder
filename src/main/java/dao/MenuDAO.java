@@ -161,7 +161,7 @@ public class MenuDAO{
 		
 		String sql = "";
 		sql += "select * from menu";
-		sql += " order by category desc";
+		sql += " order by id asc";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -204,7 +204,7 @@ public class MenuDAO{
 			sj.add(menu.toString());
 		}
 		
-		System.out.println(sj);
+//		System.out.println(sj);
 
 		return sj.toString();
 	}

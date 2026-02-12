@@ -1,22 +1,21 @@
+/*  common.js 
+    category 라는 클래스를 가지고 있는 여러개의 선택지가 있는 태그면,
+    눌렀을 때 .highlight 속성을 부여하여 이벤트를 처리하는 함수
+*/
 
-
-window.onload = function() {
+window.addEventListener('load', function() {
     const categoryList = document.querySelectorAll(".category");
 
     for (let category of categoryList) {
-        console.log("Adding click listener to category:", category);
+        // console.log("Adding click listener to category:", category);
         category.addEventListener('click', function(){
             highlight(this);
         });
     }
-	
-	if(categoryList.length > 0) {
-		categoryList[0].click();
-	}
-}
+});
 
 function highlight(selected) {
-    console.log("Selected category:", selected);
+    // console.log("Selected category:", selected);
 
     const categoryList = document.querySelectorAll(".category");
 
@@ -25,11 +24,15 @@ function highlight(selected) {
     }
     selected.classList.add("highlighted");
 
-	if(typeof showMenuListByCategory === "function") {
-        showMenuListByCategory(selected);
-	}
+	const event = new CustomEvent(
+        "categorySelected", { detail : { target : selected } } );
+    window.dispatchEvent(event);
+}
 
-    if(typeof showAdminMenu === "function") {
-        showAdminMenu(selected);
+function clickFirstCategory() {
+    const firstCategory = document.querySelector(".category");
+
+    if(firstCategory) {
+        firstCategory.click();
     }
 }

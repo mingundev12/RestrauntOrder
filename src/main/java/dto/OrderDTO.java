@@ -52,11 +52,11 @@ public class OrderDTO {
 	                     : "";
 
 	    // 2. Map<Long, OrderListDTO>을 JSON 객체 형식으로 변환
-	    StringJoiner mapSj = new StringJoiner(",", "[", "]");
+	    StringJoiner mapSj = new StringJoiner(",", "{", "}");
 	    if (this.orderMap != null) {
 	        for (Long key : this.orderMap.keySet()) {
 	            // "Key": {OrderListDTO의 JSON} 형태로 추가
-	            mapSj.add(this.orderMap.get(key).toString());
+	            mapSj.add("\"" + key + "\":" +this.orderMap.get(key).toString());
 	        }
 	    }
 
