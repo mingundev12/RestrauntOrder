@@ -38,6 +38,7 @@ function showMenuListByCategory(selected) {
                 const modal = document.querySelector("#modalWrap");
 
                 modal.querySelector(".menuName").innerText = menu.menuName;
+                modal.querySelector("img").src = menu.menuImg;
                 modal.querySelector("p").innerText = menu.price + "원";
 
                 modal.classList.remove("hide");

@@ -110,9 +110,9 @@ ul {
     margin-bottom: 15px;
 }
 
-.detail {
-    display: flex;
-    gap: 10px;
+.info p {
+    
+    text-align: center;
 }
 
 .close {
