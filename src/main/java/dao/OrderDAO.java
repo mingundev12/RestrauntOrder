@@ -8,9 +8,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 import common.DBConnection;
-import dto.MenuDTO;
-import dto.OrderDTO;
-import dto.OrderListDTO;
+import dto.*;
 
 public class OrderDAO {
 
@@ -126,8 +124,8 @@ public class OrderDAO {
 		return map;
 	}
 	
-	public static List<OrderDTO> getOrdersList() {
-		List<OrderDTO> list = new ArrayList<>();
+	public static List<OrderAndPayment> getOrdersList() {
+		List<OrderAndPayment> list = new ArrayList<>();
 		
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement pstmt = null;
@@ -136,16 +134,17 @@ public class OrderDAO {
 		String sql = "";
 		
 		try {
-			sql += "select * from orders";
+			sql += "select * from orders o left join payments p on o.id = p.order_id";
 			pstmt = conn.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				OrderDTO order = new OrderDTO(
-						rs.getLong("id"), rs.getInt("price_total"),
-						rs.getString("status"), rs.getTimestamp("created_at").toLocalDateTime(),
-						getOrderDetail(conn, rs.getLong("id"))
+				OrderAndPayment order = new OrderAndPayment(
+						rs.getLong("o.id"), rs.getInt("o.price_total"),
+						rs.getString("o.status"), rs.getTimestamp("p.created_at").toLocalDateTime(),
+						getOrderDetail(conn, rs.getLong("o.id")),
+						(rs.getString("p.pay_option") == null) ? "" : rs.getString("p.pay_option")
 						);
 				
 				
@@ -161,7 +160,7 @@ public class OrderDAO {
 	
 
 	public static String getListAsJson() {
-		List<OrderDTO> list = getOrdersList();
+		List<OrderAndPayment> list = getOrdersList();
 		StringJoiner sj = new StringJoiner(",", "[", "]");
 
 		for (OrderDTO order : list) {

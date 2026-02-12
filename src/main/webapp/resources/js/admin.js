@@ -33,7 +33,7 @@ function showAdminMenu(selected) {
                     <td>${order.id}</td>
                     <td class="text-left">${orderList}</td>
                     <td>${order.price_total.toLocaleString()}원</td>
-                    <td><span class="status-${order.status}">${order.status}</span></td>
+                    <td><span class="status-${order.status}">${order.status}:${order.payment_status}</span></td>
                     <td>${order.created_at.replace("T", " ")}</td>
                 </tr>
             `;

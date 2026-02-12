@@ -10,7 +10,7 @@
     border-radius: 15px;
     padding: 30px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .adminBtn:hover {
@@ -63,5 +63,5 @@
 /* hidden */
 
 .hidden {
-    opacity: 0;
+    display: none;
 }
