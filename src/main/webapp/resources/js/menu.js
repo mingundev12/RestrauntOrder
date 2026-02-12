@@ -32,8 +32,28 @@ function showMenuListByCategory(selected) {
                     <p><strong>${menu.menuName}</strong>
                     <br>${menu.price}원</p>
                 </div>`;
+            
+            li.querySelector(".info").addEventListener('click', () => {
+                // alert("선택된 메뉴: " + menu.menuName + " (ID: " + menu.id + ")");
+                const modal = document.querySelector("#modalWrap");
+
+                modal.querySelector(".menuName").innerText = menu.menuName;
+                modal.querySelector("p").innerText = menu.price + "원";
+
+                modal.classList.remove("hide");
+
+                let close = document.querySelector(".close");
+
+                close.addEventListener("click", hideModal);
+            });
 
             menuListUl.appendChild(li);
         });
     }
+}
+
+function hideModal() {
+    let modal = document.querySelector("#modalWrap");
+    
+    modal.classList.add("hide");
 }

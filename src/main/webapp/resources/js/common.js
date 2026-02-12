@@ -4,6 +4,7 @@ window.onload = function() {
     const categoryList = document.querySelectorAll(".category");
 
     for (let category of categoryList) {
+        console.log("Adding click listener to category:", category);
         category.addEventListener('click', function(){
             highlight(this);
         });
@@ -15,6 +16,8 @@ window.onload = function() {
 }
 
 function highlight(selected) {
+    console.log("Selected category:", selected);
+
     const categoryList = document.querySelectorAll(".category");
 
     for (let category of categoryList) {
@@ -23,6 +26,6 @@ function highlight(selected) {
     selected.classList.add("highlighted");
 
 	if(typeof showMenuListByCategory === "function") {
-    	showMenuListByCategory(selected);
+        showMenuListByCategory(selected);
 	}
 }

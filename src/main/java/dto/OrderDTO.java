@@ -1,12 +1,15 @@
 package dto;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 public class OrderDTO {
 	private long id;
 	private int price_total;
 	private String status;
 	private LocalDateTime created_at;
+	private Map<Long, OrderListDTO> orderList;
 
 	public long getId() {
 		return id;
@@ -51,9 +54,18 @@ public class OrderDTO {
 		this.price_total = price_total;
 		this.status = status;
 		this.created_at = created_at;
+		this.setOrderList(new HashMap<>());
 	}
 
 	public OrderDTO() {
+	}
+
+	public Map<Long, OrderListDTO> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(Map<Long, OrderListDTO> orderList) {
+		this.orderList = orderList;
 	}
 
 }
