@@ -4,5 +4,5 @@
 window.onload = function () {
     let orderBtn = document.querySelector(".startButton");
 
-    orderBtn.addEventListener('click', () => {location.href = "./menu.jsp";})
+    orderBtn.addEventListener('click', () => {location.href = "./menu.html";})
 }

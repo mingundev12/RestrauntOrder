@@ -188,8 +188,7 @@ public class MenuDAO{
 	}
 	
 //	public static void main(String[] args) {
-//		MenuDAO dao = new MenuDAO();
-//		dao.getList();
+//		System.out.println(getListAsJson());
 //	}
 
 	// menu 테이블에서 나온 menu 객체 리스트를 json 규격에 따라
@@ -199,8 +198,10 @@ public class MenuDAO{
 		StringJoiner sj = new StringJoiner(",", "[", "]");
 
 		for (MenuDTO menu : list) {
-			sj.add(menu);
+			sj.add(menu.toString());
 		}
+		
+		System.out.println(sj);
 
 		return sj.toString();
 	}

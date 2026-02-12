@@ -19,6 +19,7 @@
     
     <script>
         const menu_list = <%= MenuDAO.getListAsJson() %>;
+        console.log(menu_list[0].name);
     </script>
     <script src="./resources/js/menu.js"></script>
 </head>
