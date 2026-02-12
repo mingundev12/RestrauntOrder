@@ -1,42 +1,91 @@
+function sendAddMenu() {
+    const form = document.querySelector("#addForm");
+    const formData = new FormData(form);
 
-
-function showAdminMenu(selected) {
-    const contentArea = document.querySelector(".adminContent");
-    if (selected.id === "viewOrder") {
-        hideMenuBth();
-
-        if(order_list.length === 0) {
-            contentArea.innerHTML = `<p> 주문 내역이 없습니다 ! </p>`;
-            return;
+    fetch("addMenu.do", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        if(data === "success") {
+            alert("메뉴 등록 완료");
+            location.reload();
         }
-        contentArea.innerHTML = makeTableShowOrders();
-    }
-    if(selected.id === "manage") {
-        showMenuBtn();
-        contentArea.innerHTML = makeTableShowMenus();
-    }
-    if(selected.id === "deleteMenu") {
-        showDelForm();
-    }
-    if(selected.id === "addMenu") {
-        showAddForm();
-    }
-    if(selected.id === "updateMenu") {
-        showRepForm();
-    }
-
-    // modal 내부 close 버튼 클릭하면 modal 닫는 함수
-    document.querySelector(".close").addEventListener('click',() => {
-        let modal = document.getElementById("modalWrap");
-        modal.classList.add("hidden");
-        highlight(document.getElementById("manage"));
     });
+}
 
+function sendModMenu() {
+    const form = document.querySelector("#modifyForm");
+    const formData = new FormData(form);
+
+    fetch("modifyMenu.do", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        if(data === "success") {
+            alert("메뉴 수정 완료");
+            location.reload();
+        }
+    });
+}
+
+function sendDelMenu() {
+    const form = document.querySelector("#deleteform");
+    const formData = new FormData(form);
+
+    if(!confirm("정말로 삭제하시겠습니까?")) return;
+
+    fetch("deleteMenu.do", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        if(data === "success") {
+            alert("삭제 완료");
+            location.reload();
+        }
+    });
 }
 
 function showAddForm() {
     let modal = document.getElementById("modalWrap");
     modal.classList.remove("hidden");
+
+    let contentField = modal.querySelector(".content");
+    contentField.classList.add("add");
+    let contentHtml = `
+        <div class="modalTitleBox">
+            <p>등 록 하 기</p><br>
+            <span>등록할 메뉴를 입력해주세요</span>
+        </div>
+        <div class="resultBox">
+            <form id="addForm">
+                <div class="inputBox">
+                    <label>이름</label>
+                    <input type="text" name="menuName" required>
+                </div>
+                <div class="inputBox">
+                    <label>가격</label>
+                    <input type="number" name="price" step="100" min="0" required>
+                </div>
+                <div class="inputBox">
+                    <label>분류</label>
+                    <input type="text" name="category" required>
+                </div>
+                <div class="inputBox">
+                    <label>사진</label>
+                    <input type="file" name="menuImg" accept="image/*" required>
+                </div>
+            </form>
+        </div>
+        <div class="addBtnBox">
+            <button class="send" onclick="sendAddMenu()">등 록</button>
+        </div>`;
+    contentField.innerHTML = contentHtml;
 }
 
 function showRepForm() {
@@ -52,16 +101,38 @@ function showRepForm() {
             <select id="selList">${makeSelectBox()}</select>
         </div>
         <div class="resultBox hidden"></div>
-        <div class="modBtnBox hidden"><button class="send">수 정</button></div>`;
+        <div class="modBtnBox hidden">
+            <button class="send" onclick="sendModMenu()">수 정</button>
+        </div>`;
 
     contentField.innerHTML = contentHtml;
 
     // 드롭다운 목록의 선택된 항목 이벤트 등록
     const selectedMenu = document.querySelector("#selList");
     selectedMenu.addEventListener('change', (event) => {
-        const menuId = event.target.value;
-        document.querySelector(".resultBox").classList.remove("hidden");
-        document.querySelector(".delBtnBox").classList.remove("hidden");
+        const menuId = Number(event.target.value);
+        let menu = menu_list.find(m => m.id === menuId);
+        let resBox = document.querySelector(".resultBox")
+
+        resBox.innerHTML = `
+            <form id="modifyForm">
+                <input type="hidden" name="id" value="${menu.id}">
+                <div class="inputBox">
+                    <label>이름</label>
+                    <input type="text" name="menuName" value="${menu.menuName}">
+                </div>
+                <div class="inputBox">
+                    <label>가격</label>
+                    <input type="number" name="price" value="${menu.price}" step="100" min="0">
+                </div>
+                <div class="inputBox">
+                    <label>분류</label>
+                    <input type="text" name="category" value="${menu.category}">
+                </div>
+            </form>`;
+
+        resBox.classList.remove("hidden");
+        document.querySelector(".modBtnBox").classList.remove("hidden");
     });
 }
 
@@ -77,8 +148,10 @@ function showDelForm() {
             <span>삭제할 메뉴를 선택해주세요</span>
             <select id="selList">${makeSelectBox()}</select>
         </div>
-        <div class="resultBox hidden"><span></span>를 정말 삭제하시겠습니까?</div>
-        <div class="delBtnBox hidden"><button class="send">삭 제</button></div>`;
+        <div class="resultBox hidden"></div>
+        <div class="delBtnBox hidden">
+            <button class="send" onclick="sendDelMenu()">삭 제</button>
+        </div>`;
 
     contentField.innerHTML = contentHtml;
 
@@ -89,14 +162,18 @@ function showDelForm() {
         let menu = menu_list.find(m => m.id === menuId);
 
         let resBox = document.querySelector(".resultBox")
-        resBox.querySelector("span").innerText = menu.menuName;
+        resBox.innerHTML = `
+            <form id="deleteform">
+                <input type="hidden" name="id" value="${menu.id}">
+            </form>
+            <span>${menu.menuName}</span>를 정말 삭제하시겠습니까?`;
         resBox.classList.remove("hidden");
         document.querySelector(".delBtnBox").classList.remove("hidden");
     });
 }
 
 function makeSelectBox() {
-    let result = "";
+    let result = `<option value="" disabled selected>메뉴를 선택하세요</option>`;
     menu_list.forEach(menu => {
         result += `<option value="${menu.id}">${menu.menuName}</option>`;
     });
@@ -193,5 +270,39 @@ function showMenuBtn() {
     add.classList.remove("hidden");
     upd.classList.remove("hidden");
     del.classList.remove("hidden");
+
+}
+
+function showAdminMenu(selected) {
+    const contentArea = document.querySelector(".adminContent");
+    if (selected.id === "viewOrder") {
+        hideMenuBth();
+
+        if(order_list.length === 0) {
+            contentArea.innerHTML = `<p> 주문 내역이 없습니다 ! </p>`;
+            return;
+        }
+        contentArea.innerHTML = makeTableShowOrders();
+    }
+    if(selected.id === "manage") {
+        showMenuBtn();
+        contentArea.innerHTML = makeTableShowMenus();
+    }
+    if(selected.id === "deleteMenu") {
+        showDelForm();
+    }
+    if(selected.id === "addMenu") {
+        showAddForm();
+    }
+    if(selected.id === "updateMenu") {
+        showRepForm();
+    }
+
+    // modal 내부 close 버튼 클릭하면 modal 닫는 함수
+    document.querySelector(".close").addEventListener('click',() => {
+        let modal = document.getElementById("modalWrap");
+        modal.classList.add("hidden");
+        highlight(document.getElementById("manage"));
+    });
 
 }
