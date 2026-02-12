@@ -58,3 +58,10 @@
 .status-결제완료 { color: blue; font-weight: bold; }
 .status-주문취소 { color: red; font-weight: bold;}
 .status-배달완료 { color: green; }
+
+
+/* hidden */
+
+.hidden {
+    opacity: 0;
+}

@@ -1,6 +1,8 @@
 function showAdminMenu(selected) {
     const contentArea = document.querySelector(".adminContent");
     if (selected.id === "viewOrder") {
+        hideMenuBth();
+
         if(order_list.length === 0) {
             contentArea.innerHTML = `<p> 주문 내역이 없습니다 ! </p>`;
             return;
@@ -39,4 +41,29 @@ function showAdminMenu(selected) {
         tableHtml += `</tbody></table>`
         contentArea.innerHTML = tableHtml;
     }
+    if(selected.id === "manage") {
+        showMenuBtn();
+        contentArea.innerHTML = "";
+    }
+}
+
+function hideMenuBth() {
+    let add = document.getElementById("addMenu");
+    let upd = document.getElementById("updateMenu");
+    let del = document.getElementById("deleteMenu");
+
+    add.classList.add("hidden");
+    upd.classList.add("hidden");
+    del.classList.add("hidden");
+}
+
+function showMenuBtn() {
+    let add = document.getElementById("addMenu");
+    let upd = document.getElementById("updateMenu");
+    let del = document.getElementById("deleteMenu");
+
+    add.classList.remove("hidden");
+    upd.classList.remove("hidden");
+    del.classList.remove("hidden");
+
 }
