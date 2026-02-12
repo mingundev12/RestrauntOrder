@@ -1,69 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MENU - 맛나분식</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-
     <link rel="stylesheet" href="./resources/css/default.css">
     <link rel="stylesheet" href="./resources/css/menu.css">
-    
-    <script>
-        const menu_list = [{"id":6,"menuName":"스팸 마요 덮밥","menuImg":"./resources/img/rice_01.jpg","price":7500,"category":"식사"},{"id":7,"menuName":"직화 제육 덮밥","menuImg":"./resources/img/rice_02.jpg","price":8000,"category":"식사"},{"id":9,"menuName":"진한 사골 떡만둣국","menuImg":"./resources/img/noodle_02.jpg","price":8000,"category":"식사"},{"id":1,"menuName":"원조 매콤 떡볶이","menuImg":"./resources/img/dduk_01.jpg","price":4500,"category":"분식"},{"id":2,"menuName":"로제 크림 떡볶이","menuImg":"./resources/img/dduk_02.jpg","price":6500,"category":"분식"},{"id":3,"menuName":"바삭 모둠 튀김","menuImg":"./resources/img/fried_01.jpg","price":5500,"category":"분식"},{"id":4,"menuName":"찰순대 (내장포함)","menuImg":"./resources/img/sundae_01.jpg","price":4500,"category":"분식"},{"id":5,"menuName":"치즈 듬뿍 김밥","menuImg":"./resources/img/kimbap_01.jpg","price":4800,"category":"분식"},{"id":8,"menuName":"우삼겹 비빔국수","menuImg":"./resources/img/noodle_01.jpg","price":8500,"category":"면류"},{"id":10,"menuName":"어묵 듬뿍 우동","menuImg":"./resources/img/noodle_03.jpg","price":6000,"category":"면류"}];
-        console.log("Menu List:", menu_list);
-    </script>
-    <script src="./resources/js/common.js"></script>
-    <script src="./resources/js/menu.js"></script>
-
 </head>
 <body>
     <div id="wrap">
-
         <header id="header">
             <div id="title">
                 <h1>🍜 맛나분식</h1>
-                <p>메뉴 선택하기</p>
+                <p>맛있는 상상, 즐거운 선택!</p>
             </div>
             <nav id="nav">
                 <ul class="menu">
-                    <li class="menuItem">
-                        <a href="./index.html">
-                            <span class="material-icons-outlined">
-                                home
-                            </span>
-                        </a>
-                    </li>
-                    <li class="menuItem">
-                        <a href="./menu.html">
-                            <span class="material-icons-outlined">
-                                menu
-                            </span>
-                        </a>
-                    </li>
-                    <li class="menuItem">
-                        <a href="">
-                            <span class="material-icons-outlined">
-                                shopping_cart
-                            </span>
-                        </a>
-                    </li>
-                    <li class="menuItem">
-                        <a href="./payment.html">
-                            <span class="material-icons-outlined">
-                                credit_card
-                            </span>
-                        </a>
-                    </li>
-                    <li class="menuItem">
-                        <a href="./admin.html">
-                            <span class="material-icons-outlined">
-                                view_list
-                            </span>
-                        </a>
-                    </li>
+                    <li class="menuItem"><a href="./index.html"><span class="material-icons-outlined">home</span></a></li>
+                    <li class="menuItem"><a href="./menu.html"><span class="material-icons-outlined">menu</span></a></li>
+                    <li class="menuItem"><a href="./cart.html"><span class="material-icons-outlined">shopping_cart</span></a></li>
                 </ul>
             </nav>
         </header>
@@ -71,33 +27,14 @@
         <main id="main">
             <div class="categoryWrap">
                 <ul class="categoryList">
-                    <li class="category"><p>분&nbsp;&nbsp;&nbsp;&nbsp;식</p></li>
-                    <li class="category"><p>식&nbsp;&nbsp;&nbsp;&nbsp;사</p></li>
-                    <li class="category"><p>면&nbsp;&nbsp;&nbsp;&nbsp;류</p></li>
+                    <li class="category highlighted" data-category="분식"><p>분식</p></li>
+                    <li class="category" data-category="식사"><p>식사</p></li>
+                    <li class="category" data-category="면류"><p>면류</p></li>
                 </ul>
             </div>
+
             <div class="menuWrap">
-                <ul class="menuList">
-                    <li class="menu">
-                        <div class="info">
-                            <img src="./resources/img/dduk_01.jpg">
-                            <p><strong>떡볶이</strong><br>3000원</p>
-                        </div>
-                    </li>
-                    <li class="menu">
-                        <div class="info">
-                            <img src="./resources/img/dduk_02.jpg">
-                            <p><strong>로제떡볶이</strong><br>4000원</p>
-                        </div>
-                    </li>
-                    <li class="menu">
-                        <div class="info">
-                            <img src="./resources/img/fried_01.jpg">
-                            <p><strong>모듬튀김</strong><br>3000원</p>
-                        </div>
-                    </li>
-                </ul>
-                
+                <ul class="menuList"></ul>
             </div>
 
             <div id="modalWrap" class="hide">
@@ -106,23 +43,41 @@
                     <div class="close"><span class="material-icons-outlined">close</span></div>
                     <div class="content">
                         <h3 class="menuName"></h3>
-                        <div class="info">
-                            <img src="" alt="">
-                            <p></p>
+                        <div class="modalBody">
+                            <img src="" alt="" class="modalImg">
+                            <div class="order-interface">
+                                <div class="quantity-control">
+                                    <button type="button" class="btn-minus">-</button>
+                                    <input type="number" id="menuQuantity" value="1" readonly>
+                                    <button type="button" class="btn-plus">+</button>
+                                </div>
+                                <p class="totalPriceText">총 금액: 0원</p>
+                                <button id="addToCartBtn">장바구니 담기 🛒</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-
     </div>
-    
-    <footer id="footer">
-        <div class="footerBox">
-            <div class="footerText"><p>대표이사 : 김맛나    </p></div>
-            <div class="footerText"><p>matnasnack@matna.com</p></div>
-            <div class="footerText"><p>Matna Company ⓒ All right Reserved.</p></div>
-        </div>
-    </footer>
+
+    <div id="toast">
+        <span class="material-icons-outlined">celebration</span>
+        <span id="toastMsg">장바구니에 담겼어요!</span>
+    </div>
+
+    <script>
+        const menu_list = [
+            {"id":1,"menuName":"원조 매콤 떡볶이","menuImg":"./resources/img/dduk_01.jpg","price":4500,"category":"분식"},
+            {"id":2,"menuName":"로제 크림 떡볶이","menuImg":"./resources/img/dduk_02.jpg","price":6500,"category":"분식"},
+            {"id":3,"menuName":"바삭 모둠 튀김","menuImg":"./resources/img/fried_01.jpg","price":5500,"category":"분식"},
+            {"id":4,"menuName":"찰순대 (내장포함)","menuImg":"./resources/img/sundae_01.jpg","price":4500,"category":"분식"},
+            {"id":5,"menuName":"치즈 듬뿍 김밥","menuImg":"./resources/img/kimbap_01.jpg","price":4800,"category":"분식"},
+            {"id":6,"menuName":"스팸 마요 덮밥","menuImg":"./resources/img/rice_01.jpg","price":7500,"category":"식사"},
+            {"id":7,"menuName":"직화 제육 덮밥","menuImg":"./resources/img/rice_02.jpg","price":8000,"category":"식사"},
+            {"id":8,"menuName":"우삼겹 비빔국수","menuImg":"./resources/img/noodle_01.jpg","price":8500,"category":"면류"}
+        ];
+    </script>
+    <script src="./resources/js/menu.js"></script>
 </body>
 </html>
