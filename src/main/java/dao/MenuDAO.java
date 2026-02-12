@@ -34,7 +34,7 @@ public class MenuDAO{
 		return id;
 	}
 	
-	public boolean insert(MenuDTO menu) {
+	public static boolean insert(MenuDTO menu) {
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement pstmt = null;
 		
@@ -64,7 +64,7 @@ public class MenuDAO{
 		return false;
 	}
 	
-	public boolean update(MenuDTO menu) {
+	public static boolean update(MenuDTO menu) {
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement pstmt = null;
 		
@@ -96,7 +96,7 @@ public class MenuDAO{
 		return false;
 	}
 	
-	public boolean delete(MenuDTO menu) {
+	public static boolean delete(MenuDTO menu) {
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement pstmt = null;
 		

@@ -1,3 +1,5 @@
+
+
 function showAdminMenu(selected) {
     const contentArea = document.querySelector(".adminContent");
     if (selected.id === "viewOrder") {
@@ -13,6 +15,43 @@ function showAdminMenu(selected) {
         showMenuBtn();
         contentArea.innerHTML = makeTableShowMenus();
     }
+    if(selected.id === "deleteMenu") {
+        showDelForm();
+    }
+    if(selected.id === "addMenu") {
+        showAddForm();
+    }
+    if(selected.id === "updateMenu") {
+        showRepForm();
+    }
+
+    // modal 내부 close 버튼 클릭하면 modal 닫는 함수
+    document.querySelector(".close").addEventListener('click',() => {
+        let modal = document.getElementById("modalWrap");
+        modal.classList.add("hidden");
+        highlight(document.getElementById("manage"));
+    });
+}
+
+function showAddForm() {
+    let modal = document.getElementById("modalWrap");
+    modal.classList.remove("hidden");
+}
+
+function showRepForm() {
+    let modal = document.getElementById("modalWrap");
+    modal.classList.remove("hidden");
+}
+
+function showDelForm() {
+    let modal = document.getElementById("modalWrap");
+    modal.classList.remove("hidden");
+}
+
+function closeModal() {
+    let modal = document.getElementById("modalWrap");
+    modal.classList.add("hidden");
+    highlight(document.getElementById("manage"));
 }
 
 function makeTableShowMenus() {
