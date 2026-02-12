@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>결제하기 - 맛나분식</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./default.css">
+    
+
+    <script src="./Order.js"></script>
+    <link rel="stylesheet" href="./Order.css">
+    <link rel="stylesheet" href="./Order2.css">
+</head>
+<body>
+
+    <div id="wrap">
+
+    <!-- 헤더 -->
+        <header id="header">
+            <div id="title">
+                <h1>🍜 맛나분식</h1>
+                <p>주문 확인 및 결제</p>
+            </div>
+            <nav id="nav">
+                <ul class="menu">
+                    <li class="menuItem">
+                        <a href="./index.html">
+                            <span class="material-icons-outlined">
+                                home
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menuItem">
+                        <a href="./menu.html">
+                            <span class="material-icons-outlined">
+                                menu
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menuItem">
+                        <a href="">
+                            <span class="material-icons-outlined">
+                                shopping_cart
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menuItem">
+                        <a href="./payment.html">
+                            <span class="material-icons-outlined">
+                                credit_card
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menuItem">
+                        <a href="">
+                            <span class="material-icons-outlined">
+                                view_list
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </header>
+   <main id="main">   
+        <div id="menuScreen">
+            <div class="menu-buttons">
+                <button onclick="addItem('떡볶이', 3500)">떡볶이 3,500원</button>
+                <button onclick="addItem('순대', 4000)">순대 4,000원</button>
+                <button onclick="addItem('김밥', 2500)">김밥 2,500원</button>
+                <button onclick=""
+            </div>
+
+            <h3>장바구니</h3>
+            <div id="cartList"></div>
+            <p id="totalPrice">총 금액: 0원</p>
+
+            <button onclick="goToPayment()">주문하기</button>
+        </div>
+    </main> 
+
+    <footer id="footer">
+        <div class="footerBox">
+            <div class="footerText"><p>대표이사 : 김맛나    </p></div>
+            <div class="footerText"><p>matnasnack@matna.com</p></div>
+            <div class="footerText"><p>Matna Company ⓒ All right Reserved.</p></div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
