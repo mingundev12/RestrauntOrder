@@ -39,7 +39,9 @@ public class MenuDAO{
 		PreparedStatement pstmt = null;
 		
 //		menu_img 는 "./resources/img/id.jpg" 로 저장
-		menu.setMenuImg("./resources/img/" + menu.getId() + ".jpg");
+		if(menu.getMenuImg().equals("")) {
+			menu.setMenuImg("./resources/img/coming_soon.png");
+		}
 		
 		String sql = "";
 		sql += "insert into menu (menu_name, menu_img, price, category) values";
