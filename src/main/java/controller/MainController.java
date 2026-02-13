@@ -78,6 +78,14 @@ public class MainController extends HttpServlet {
 			System.out.println(result);
 			response.setContentType("application/json; charset=UTF-8");
 			response.getWriter().print(result);
+		} else if (path.equals("/getMenuData.do")) {
+			String menuJson = MenuDAO.getListAsJson();
+			
+			String result = String.format("\"menuList\": %s", menuJson);
+			System.out.println(result);
+			
+			response.setContentType("application/json; charset=UTF-8");
+			response.getWriter().print(result);
 		}
 	}
 }

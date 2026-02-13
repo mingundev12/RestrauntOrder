@@ -20,3 +20,11 @@ const menu_list = [
     {"id":7,"menuName":"직화 제육 덮밥","menuImg":"./resources/img/rice_02.jpg","price":8000,"category":"식사"},
     {"id":8,"menuName":"우삼겹 비빔국수","menuImg":"./resources/img/noodle_01.jpg","price":8500,"category":"면류"}
 ];
+
+window.addEventListener('DOMContentLoaded', function() {
+    fetch("getMenuData.do")
+        .then(res => res.json())
+        .then(data => {
+            menu_list = data.menuList;
+        }).catch(err => console.error("데이터 로딩 실패 : ", err))
+});
