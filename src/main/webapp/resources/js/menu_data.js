@@ -21,10 +21,10 @@ const menu_list = [
     {"id":8,"menuName":"우삼겹 비빔국수","menuImg":"./resources/img/noodle_01.jpg","price":8500,"category":"면류"}
 ];
 
-window.addEventListener('DOMContentLoaded', function() {
-    fetch("getMenuData.do")
-        .then(res => res.json())
-        .then(data => {
-            menu_list = data.menuList;
-        }).catch(err => console.error("데이터 로딩 실패 : ", err))
-});
+// window.addEventListener('DOMContentLoaded', function() {
+//     fetch("getMenuData.do")
+//         .then(res => res.json())
+//         .then(data => {
+//             menu_list = data.menuList;
+//         }).catch(err => console.error("데이터 로딩 실패 : ", err))
+// });
