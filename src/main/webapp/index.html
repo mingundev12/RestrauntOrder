@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>맛나분식</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
     <link rel="stylesheet" href="./resources/css/default.css">
+    <link rel="stylesheet" href="./resources/css/index.css">
+
+    <script src="./resources/js/index.js"></script>
 </head>
 <body>
-    <wrap id="wrap">
+    <div id="wrap">
         <header id="header">
-            <div id="title"><h1 class="title">ㅁㅁ분식</h1></div>
+            <div id="title">
+                <h1>🍜 맛나분식</h1>
+                <p>111111</p>
+            </div>
             <nav id="nav">
                 <ul class="menu">
                     <li class="menuItem">
@@ -23,28 +30,28 @@
                         </a>
                     </li>
                     <li class="menuItem">
-                        <a href="">
+                        <a href="./menu.html">
                             <span class="material-icons-outlined">
                                 menu
                             </span>
                         </a>
                     </li>
                     <li class="menuItem">
-                        <a href="">
+                        <a href="./order.html">
                             <span class="material-icons-outlined">
                                 shopping_cart
                             </span>
                         </a>
                     </li>
                     <li class="menuItem">
-                        <a href="">
+                        <a href="./payment.html">
                             <span class="material-icons-outlined">
                                 credit_card
                             </span>
                         </a>
                     </li>
                     <li class="menuItem">
-                        <a href="">
+                        <a href="./admin.html">
                             <span class="material-icons-outlined">
                                 view_list
                             </span>
@@ -54,11 +61,23 @@
             </nav>
         </header>
         <main id="main">
+            <div class="startBoxWrap">
+                <div class="startBox">
+                    <button class="startButton" >
+                        <p>주문하기</p>
+                    </button>
+                </div>
+            </div>
 
         </main>
-        <footer id="footer">
-
-        </footer>
-    </wrap>
+    </div>
+    
+    <footer id="footer">
+        <div class="footerBox">
+            <div class="footerText"><p>대표이사 : 김맛나    </p></div>
+            <div class="footerText"><p>matnasnack@matna.com</p></div>
+            <div class="footerText"><p>Matna Company ⓒ All right Reserved.</p></div>
+        </div>
+    </footer>
 </body>
 </html>

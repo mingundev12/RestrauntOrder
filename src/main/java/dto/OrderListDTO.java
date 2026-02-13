@@ -71,8 +71,10 @@ public class OrderListDTO {
 
 	@Override
 	public String toString() {
-		return "OrderListDTO [id=" + id + ", orderId=" + orderId + ", menuId=" + menuId + ", orderedName=" + orderedName
-				+ ", orderedPrice=" + orderedPrice + ", amount=" + amount + "]";
+		return String.format(
+		        "{\"id\":%d, \"orderId\":%d, \"menuId\":%d, \"orderedName\":\"%s\", \"orderedPrice\":%d, \"amount\":%d}",
+		        id, orderId, menuId, orderedName, orderedPrice, amount
+		    );
 	}
 
 }
