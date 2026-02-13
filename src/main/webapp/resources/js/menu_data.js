@@ -21,8 +21,6 @@ const menu_list = [
     {"id":8,"menuName":"우삼겹 비빔국수","menuImg":"./resources/img/noodle_01.jpg","price":8500,"category":"면류"}
 ];
 
-// const menu_list = [];
-
 // window.addEventListener('DOMContentLoaded', function() {
 //     fetch("getMenuData.do")
 //         .then(res => res.json())
